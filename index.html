@@ -98,6 +98,7 @@
             border-radius: 25px;
             transition: all 0.3s ease;
             font-weight: 500;
+            white-space: nowrap;
         }
 
         .nav a:hover {
@@ -177,6 +178,53 @@
             margin-bottom: 8px;
         }
 
+        /* Team BLock */
+        .team-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+        }
+
+        .team-member {
+            text-align: center;
+            background: rgba(40, 40, 40, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            z-index: 1;
+            flex: 1 1 200px;
+            max-width: 220px;
+        }
+
+        .team-member img {
+            width: 100%;
+            height: auto;
+            max-width: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+            background: #333;
+        }
+
+        .team-member p {
+            font-weight: 600;
+            color: #10b981;
+        }
+
+        .team-container:hover .team-member {
+            filter: blur(3px);
+            opacity: 0.5;
+        }
+
+        .team-member:hover {
+            filter: none !important;
+            opacity: 1 !important;
+            transform: scale(1.05);
+            z-index: 10;
+            background: rgba(60, 60, 60, 0.8);
+        }
         /* Code Block */
         .code-block {
             background: rgba(15, 15, 15, 0.8);
@@ -322,7 +370,8 @@
             <li><a href="#architecture">Architecture</a></li>
             <li><a href="#erd">ERD</a></li>
             <li><a href="#queries">Queries</a></li>
-            <li><a href="#fiddle">DB Fiddle</a></li>
+            <li><a href="#fiddle">DB-Fiddle</a></li>
+            <li><a href="#team">Team</a></li>
         </ul>
     </nav>
 
@@ -396,8 +445,7 @@
             <h2 class="section-title">Entity Relationship Diagram</h2>
             <div class="card">
                 <h3>Database Schema</h3>
-                <p><em>Entity Relationship Diagram to be inserted here showing the relationships between Users, Subscriptions, Stations, Charging Sessions, and other entities...</em></p>
-        
+                <p><em></em></p>
                 <div style="background: rgba(40, 40, 40, 0.3); border: 2px dashed rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 60px; text-align: center; margin: 20px 0;">
                     <img src="database.drawio.png" alt="Entity Relationship Diagram" style="max-width: 100%; height: auto;">
                 </div>
@@ -457,9 +505,37 @@
                     <p style="color: #a0a0a0; font-size: 0.9rem;">Insert your DB-Fiddle or SQL Fiddle link here</p>
                 </div>
                 
-                <a href="#" class="link-button">Access DB-Fiddle Demo</a>
+                <a href="https://www.db-fiddle.com/f/xB9nLG3yMZdckVDPpFsjuN/3" target="_blank" class="link-button">Access DB-Fiddle Demo</a>
             </div>
         </section>
+
+        <section id="team" class="section">
+            <h2 class="section-title">Meet the Team</h2>
+            <div class="team-container">
+                <div class="team-member">
+                    <img src="pfp/Abdul.jpg" alt="Team Member 1">
+                    <p>Abdul Azim Bansara/p>
+                </div>
+                <div class="team-member">
+                    <img src="pfp/Gallok.jpg" alt="Team Member 2">
+                    <p>Alfe Kevin Gallo</p>
+                </div>
+                <div class="team-member">
+                    <img src="" alt="Team Member 3">
+                    <p>Jirraine S. Octaviano</p>
+                </div>
+                <div class="team-member">
+                    <img src="pfp/Quillo.jpg" alt="Team Member 3">
+                    <p>Carl Louie A. Quillo</p>
+                </div>
+                <div class="team-member">
+                    <img src="path-to-image3.jpg" alt="Team Member 3">
+                    <p>Reysha Marie S. Salinas</p>
+                </div>
+            </div>
+        </section>
+
+
     </div>
 
     <script>
