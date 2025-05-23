@@ -399,12 +399,15 @@
             <h2 class="section-title">Rationale</h2>
             <div class="card">
                 <h3>Problem Statement</h3>
-                <p>With the modern, more interconnected world, mobile device power access is now crucial for communication, productivity, and emergencies. However, public charging solutions are often limited, costly, or rely entirely on grid electricity derived from fossil fuels, contributing to environmental degradation and climate change.</p>
+                <p>Current public charging infrastructure often lacks the flexibility and efficiency needed to serve diverse user needs. Most systems do not effectively balance free and premium access, leading to limited availability, poor resource allocation, and user dissatisfaction. Additionally, these systems frequently lack real-time monitoring and management capabilities, hindering administrators from making informed decisions.</p>
                 
-                <p>Users in public spaces frequently experience battery anxiety -- the fear of running out of power without access to charging facilities. Traditional solutions like paid charging stations create financial barriers, while grid-dependent options fail to leverage renewable energy sources that could reduce carbon footprints.</p>
-                
+                <p>There is often an overlap between user and administrator functionalities, which can compromise both usability and privacy. Furthermore, many systems are not designed to scale, and suffer from poor data integrity and lack of support for analytics or historical tracking, making optimization difficult over time.</p>
+                <p> </p>
+                <p></p>
+
                 <h3>Solution Approach</h3>
-                <p>The SolarCharge database system addresses these challenges by providing a comprehensive data management solution that supports both free and premium charging tiers, energy consumption tracking, user subscription management, and station monitoring capabilities. This ensures efficient resource allocation while promoting sustainable energy practices.</p>
+                <p>The SolarCharge database system is designed to support a comprehensive solar-powered charging network that ensures efficiency, flexibility, and security. It implements a dual-tier service model to handle both free and premium access, along with detailed usage tracking and energy monitoring for optimal resource use.</p>
+                <p>The system clearly separates user roles from administrator capabilities, providing real-time system visibility at appropriate levels while safeguarding user privacy. Its scalable, normalized database structure allows for seamless expansion and maintains data integrity through consistent relationships. Additionally, the inclusion of historical data tracking supports advanced analytics and system optimization to continuously improve performance and service delivery.</p>
             </div>
         </section>
 
@@ -413,12 +416,58 @@
             <div class="card">
                 <h3>Primary Objectives</h3>
                 <ul>
-                    <li>Develop a robust database system to manage user accounts and subscription plans for both free and premium charging services</li>
-                    <li>Implement energy consumption tracking and quota management for premium users with daily limits</li>
-                    <li>Create a comprehensive station management system to monitor charging port availability and usage statistics</li>
-                    <li>Design efficient data structures to support real-time charging status updates and resource allocation</li>
-                    <li>Establish a scalable database architecture that can accommodate multiple charging stations and growing user base</li>
-                    <li>Implement data analytics capabilities to track usage patterns and optimize station deployment</li>
+                    <li>
+                        <strong>Support User Subscription Management:</strong>
+                        <ul>
+                            <li>Track subscription plans, purchases, and energy usage limits.</li>
+                            <li>Enable tiered access to premium features based on subscription level.</li>
+                            <li>Monitor daily energy consumption against quota limits.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Enable Station and Port Monitoring:</strong>
+                        <ul>
+                            <li>Provide real-time visibility of port occupancy status.</li>
+                            <li>Monitor energy generation, consumption, and battery status.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Facilitate Administrative Oversight:</strong>
+                        <ul>
+                            <li>Allow administrators to see which specific users are using charging stations.</li>
+                            <li>Monitor technical performance metrics of stations and ports.</li>
+                            <li>Support maintenance tracking and scheduling.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Enable User Station Status Visibility:</strong>
+                        <ul>
+                            <li>Allow users to view current availability of charging stations.</li>
+                            <li>Provide appropriate station status information based on user role.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Support Transaction Processing:</strong>
+                        <ul>
+                            <li>Track payments, subscription activations, and renewals.</li>
+                            <li>Maintain financial records for system sustainability.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Record Session Data:</strong>
+                        <ul>
+                            <li>Capture detailed information about each charging session.</li>
+                            <li>Link sessions to users, ports, stations, and subscriptions.</li>
+                            <li>Calculate energy consumption for quota management.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Facilitate System Communication:</strong>
+                        <ul>
+                            <li>Support notifications to users about charging status.</li>
+                            <li>Enable technical alerts for system maintenance.</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -427,17 +476,13 @@
             <h2 class="section-title">Database Architecture</h2>
             <div class="card">
                 <h3>Architecture Overview</h3>
-                <p><em>Database architecture details to be added based on system design specifications...</em></p>
-                
-                <h3>Key Components</h3>
-                <ul>
-                    <li><strong>User Management Module:</strong> Handles user registration, authentication, and profile management</li>
-                    <li><strong>Subscription System:</strong> Manages various subscription plans (Daily, Weekly, Monthly, Quarterly)</li>
-                    <li><strong>Energy Tracking Module:</strong> Monitors energy consumption and quota management</li>
-                    <li><strong>Station Management System:</strong> Tracks charging stations, ports, and availability</li>
-                    <li><strong>Usage Analytics Engine:</strong> Processes usage data and generates insights</li>
-                    <li><strong>Payment Integration:</strong> Handles subscription payments via PayPal sandbox</li>
-                </ul>
+                <div style="background: rgba(40, 40, 40, 0.3); border: 2px dashed rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 60px; text-align: center; margin: 20px 0;">
+                    <img src="DB_archi.png" alt="Database Architecture Diagram" style="max-width: 100%; height: auto;">                
+                </div>
+
+                <h3>Components</h3>
+                <p><em>"SolarCharge: Smart Solar-Powered Free Charging Stations" is a web-based platform designed to provide free, sustainable smartphone charging through solar-powered stations, supported by a robust three-tier DBMS architecture. The system is structured based on an ERD (Entity-Relationship Diagram) that maps the relationships between users, subscriptions, charging sessions, charging ports, and station management. In the Presentation Tier, users access a mobile-friendly web interface to locate stations, start charging, view usage history, and receive notifications. Admins use a secure dashboard to manage stations, monitor performance, and schedule maintenance. The Application Tier acts as the system’s brain, processing business logic such as user authentication, subscription validation, session tracking, and solar energy allocation based on predefined usage plans. It also ensures fair access by enforcing time or energy limits and handling notifications. Finally, the Database Tier securely stores all system data, including user profiles, session logs, real-time charging status, energy usage, and maintenance records. By combining solar technology with intelligent data management, SolarCharge offers a scalable, eco-friendly, and user-friendly solution for public smartphone charging needs—especially in outdoor, remote, or high-traffic urban environments.</em></p>
+
             </div>
         </section>
 
@@ -456,41 +501,188 @@
             <h2 class="section-title">SQL Queries</h2>
             <div class="card">
                 <h3>Sample Queries for System Objectives</h3>
-                
-                <p><strong>Query 1: User Registration and Management</strong></p>
+
+                <p><strong>Query 1: User Subscription Management</strong></p>
                 <div class="code-block">
-                    <pre>-- Insert sample query for user management
--- Example: Creating a new user account
--- SQL statement to be added...</pre>
+                    <pre>
+        SELECT
+            u.user_id,
+            u.username,
+            sp.plan_name,
+            us.start_date,
+            us.end_date,
+            sp.data_usage_limit,
+            COALESCE(SUM(d.total_energy_used_mah), 0) AS total_energy_used,
+            sp.data_usage_limit - COALESCE(SUM(d.total_energy_used_mah), 0) AS remaining_mah
+        FROM
+            user u
+        JOIN
+            user_subscription us ON u.user_id = us.user_id
+        JOIN
+            subscription_plan sp ON us.plan_id = sp.plan_id
+        LEFT JOIN
+            daily_energy_usage d ON u.user_id = d.user_id AND d.usage_date BETWEEN us.start_date AND us.end_date
+        WHERE
+            us.is_active = TRUE AND u.is_active = TRUE
+        GROUP BY
+            u.user_id, sp.plan_name, us.start_date, us.end_date, sp.data_usage_limit;
+        </pre>
+                </div>
+                <div style="background: rgba(40, 40, 40, 0.3); border: 2px dashed rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 60px; text-align: center; margin: 20px 0;">
+                    <img src="sqloutput/SupportUserSubscriptionManagement.png" alt="Output of Query 1: User Subscription Management" style="max-width: 100%; height: auto;">
                 </div>
 
-                <p><strong>Query 2: Subscription Plan Management</strong></p>
+                <p><strong>Query 2: Enable Station and Port Monitoring</strong></p>
                 <div class="code-block">
-                    <pre>-- Insert sample query for subscription handling
--- Example: Upgrading user subscription plan
--- SQL statement to be added...</pre>
+                    <pre>
+        SELECT
+            rs.station_id,
+            cs.station_name,
+            rs.status_time,
+            rs.battery_level_percentage,
+            rs.solar_input_watts,
+            rs.power_consumption_watts,
+            rs.active_free_ports,
+            rs.total_free_ports,
+            rs.active_premium_ports,
+            rs.total_premium_ports,
+            rs.system_operational
+        FROM
+            real_time_station_status rs
+        JOIN
+            charging_station cs ON rs.station_id = cs.station_id
+        WHERE
+            rs.status_time = (
+                SELECT MAX(status_time) FROM real_time_station_status WHERE station_id = rs.station_id
+            );
+        </pre>
+                </div>
+                <div style="background: rgba(40, 40, 40, 0.3); border: 2px dashed rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 60px; text-align: center; margin: 20px 0;">
+                    <img src="sqloutput/EnableStationandPortMonitoring.png" alt="Image Placeholder for Query 2 Output" >
                 </div>
 
-                <p><strong>Query 3: Energy Consumption Tracking</strong></p>
+                <p><strong>Query 3: Facilitate Administrative Oversight</strong></p>
                 <div class="code-block">
-                    <pre>-- Insert sample query for energy tracking
--- Example: Calculating daily energy usage
--- SQL statement to be added...</pre>
+                    <pre>
+        SELECT
+            a.admin_id,
+            a.full_name AS admin_name,
+            cs.station_id,
+            cs.station_name,
+            cs.location_description,
+            cs.is_active
+        FROM
+            admin a
+        LEFT JOIN
+            charging_station cs ON a.admin_id = cs.assigned_admin_id
+        ORDER BY
+            a.admin_id;
+        </pre>
+                </div>
+                <div style="background: rgba(40, 40, 40, 0.3); border: 2px dashed rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 60px; text-align: center; margin: 20px 0;">
+                    <p style="color: #10b981; font-style: italic;">Image Placeholder for Query 3 Output</p>
+                    <img src="sqloutput/FacilitateAdministrativeOversight.png" alt="Image Placeholder for Query 3 Output">
                 </div>
 
-                <p><strong>Query 4: Station Availability Monitoring</strong></p>
+                <p><strong>Query 4: Enable User Station Status Visibility</strong></p>
                 <div class="code-block">
-                    <pre>-- Insert sample query for station management
--- Example: Finding available premium charging ports
--- SQL statement to be added...</pre>
+                    <pre>
+        SELECT
+            psv.station_id,
+            cs.station_name,
+            psv.last_updated,
+            psv.available_free_ports,
+            psv.available_premium_ports,
+            psv.estimated_wait_time,
+            psv.is_operational,
+            psv.status_message
+        FROM
+            public_station_view psv
+        JOIN
+            charging_station cs ON psv.station_id = cs.station_id
+        WHERE
+            cs.is_active = TRUE;
+        </pre>
+                </div>
+                <div style="background: rgba(40, 40, 40, 0.3); border: 2px dashed rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 60px; text-align: center; margin: 20px 0;">
+                    <p style="color: #10b981; font-style: italic;">Image Placeholder for Query 4 Output</p>
+                    <img src="sqloutput/EnableUserStationStatusVisibility.png" alt="Image Placeholder for Query 4 Output">
                 </div>
 
-                <p><strong>Query 5: Usage Analytics</strong></p>
+                <p><strong>Query 5: Support Transaction Processing</strong></p>
                 <div class="code-block">
-                    <pre>-- Insert sample query for analytics
--- Example: Generating usage statistics report
--- SQL statement to be added...</pre>
+                    <pre>
+        SELECT
+            p.payment_id,
+            u.user_id,
+            u.username,
+            p.subscription_id,
+            p.amount,
+            p.payment_method,
+            p.payment_date,
+            p.payment_status
+        FROM
+            payment p
+        JOIN
+            user u ON p.user_id = u.user_id
+        ORDER BY
+            p.payment_date DESC
+        LIMIT 10;
+        </pre>
                 </div>
+                <div style="background: rgba(40, 40, 40, 0.3); border: 2px dashed rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 60px; text-align: center; margin: 20px 0;">
+                    <img src="sqloutput/SupportTransactionProcessing.png" alt="Support Transaction Processing">
+                </div>
+
+                <p><strong>Query 6: Record Session Data</strong></p>
+                <div class="code-block">
+                    <pre>
+        SELECT
+            cs.session_id,
+            u.user_id,
+            u.username,
+            cs.port_id,
+            cs.energy_consumed_mah,
+            cs.start_time,
+            cs.status,
+            cs.is_premium
+        FROM
+            charging_session cs
+        JOIN
+            user u ON cs.user_id = u.user_id
+        WHERE
+            cs.status = 'Active';
+        </pre>
+                </div>
+                <div style="background: rgba(40, 40, 40, 0.3); border: 2px dashed rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 60px; text-align: center; margin: 20px 0;">
+                    <p style="color: #10b981; font-style: italic;">Image Placeholder for Query 6 Output</p>
+                    <img src="sqloutput/RecordSessionData.png" alt="Record Session Data">
+                </div>
+
+                <p><strong>Query 7: Facilitate System Communication</strong></p>
+                <div class="code-block">
+                    <pre>
+        SELECT
+            sm.station_id,
+            cs.station_name,
+            sm.maintenance_date,
+            sm.maintenance_type,
+            sm.maintenance_description,
+            sm.performed_by,
+            sm.next_schedule
+        FROM
+            station_maintenance sm
+        JOIN
+            charging_station cs ON sm.station_id = cs.station_id
+        ORDER BY
+            sm.maintenance_date DESC;
+        </pre>
+                </div>
+                <div style="background: rgba(40, 40, 40, 0.3); border: 2px dashed rgba(16, 185, 129, 0.3); border-radius: 15px; padding: 60px; text-align: center; margin: 20px 0;">
+                    <p style="color: #10b981; font-style: italic;">Image Placeholder for Query 7 Output</p>
+                    <img src="sqloutput/FacilitateSystemCommunication.png" alt="Facilitate System Communication">
+                </div>
+
             </div>
         </section>
 
@@ -501,8 +693,8 @@
                 <p>Access the live database schema and test queries using DB-Fiddle. This interactive environment allows you to explore the database structure and execute sample queries.</p>
                 
                 <div style="background: rgba(40, 40, 40, 0.3); border: 2px dashed rgba(59, 130, 246, 0.3); border-radius: 15px; padding: 40px; text-align: center; margin: 20px 0;">
-                    <p style="color: #3b82f6; font-style: italic;">DB-Fiddle Link Placeholder</p>
-                    <p style="color: #a0a0a0; font-size: 0.9rem;">Insert your DB-Fiddle or SQL Fiddle link here</p>
+                    <p style="color: #3b82f6; font-style: italic;">https://www.db-fiddle.com/f/xB9nLG3yMZdckVDPpFsjuN/4</p>
+                    <p style="color: #a0a0a0; font-size: 0.9rem;">DB Fiddle link</p>
                 </div>
                 
                 <a href="https://www.db-fiddle.com/f/xB9nLG3yMZdckVDPpFsjuN/3" target="_blank" class="link-button">Access DB-Fiddle Demo</a>
@@ -517,7 +709,7 @@
                     <p>Abdul Azim Bansara/p>
                 </div>
                 <div class="team-member">
-                    <img src="pfp/Gallok.jpg" alt="Team Member 2">
+                    <img src="pfp/Gallok.png" alt="Team Member 2">
                     <p>Alfe Kevin Gallo</p>
                 </div>
                 <div class="team-member">
